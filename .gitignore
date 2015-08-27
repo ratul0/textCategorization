@@ -6,6 +6,15 @@ nbactions.xml
 nb-configuration.xml
 .nb-gradle/
 *.txt
+!compareModule/accident/*
+!compareModule/art/*
+!compareModule/crime/*
+!compareModule/education/*
+!compareModule/environment/*
+!compareModule/international/*
+!compareModule/opinion/*
+!compareModule/science_tech/*
+!compareModule/sports/*
 !accident.txt
 !art.txt
 !crime.txt

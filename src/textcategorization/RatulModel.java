@@ -26,11 +26,13 @@ public class RatulModel {
     ArrayList<Double> tfs, tfs2;
     ArrayList<Double> tf_idf, tf_idf2;
     ArrayList<String> allWord, allword2;
-    //String [] allModelName = {"accident","art","crime","education","environment","international","opinion","science_tech","sports"};
-    String [] allModelName = {"accident","art"};
+    String [] allModelName = {"accident","art","crime","education","environment","international","opinion","science_tech","sports"};
+    //String [] allModelName = {"accident","art"};
     TrainingModel[] modelArray = new TrainingModel[9];
     
     Double[] storeCosineSimilarity = new Double[9];
+    
+    int fileCount = 2;
     
         
     public RatulModel() {
@@ -80,13 +82,20 @@ public class RatulModel {
     
     public Double[] getResult(String filename){
         int counter = 0 ;
+        double average = 0;
         storeCosineSimilarity = new Double[storeCosineSimilarity.length];
         for(String modelName : allModelName){
+            average = 0;
             Helper calculateTFIDF = new Helper();
                 tf_idf = calculateTFIDF.getTFIDF(modelArray[counter], filename);
-                tf_idf2 = calculateTFIDF.getTFIDF(modelArray[counter], modelName);
-                storeCosineSimilarity[counter] = calculateTFIDF.getCosineSimilarity(tf_idf, tf_idf2);
-                System.out.println(storeCosineSimilarity[counter]);
+                for(int i=1;i<=fileCount;i++){
+                    tf_idf2 = calculateTFIDF.getTFIDF(modelArray[counter], "compareModule/"+modelName+"/"+modelName+i);
+                    average += calculateTFIDF.getCosineSimilarity(tf_idf, tf_idf2);
+                }
+                average /=fileCount;
+                
+                storeCosineSimilarity[counter] = average;
+                //System.out.println(storeCosineSimilarity[counter]);
                 counter++;
         }
         return  storeCosineSimilarity;
