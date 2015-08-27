@@ -6,3 +6,12 @@ nbactions.xml
 nb-configuration.xml
 .nb-gradle/
 *.txt
+!accident.txt
+!art.txt
+!crime.txt
+!education.txt
+!environment.txt
+!international.txt
+!opinion.txt
+!science_tech.txt
+!sports.txt
