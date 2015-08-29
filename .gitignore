@@ -17,6 +17,7 @@ nb-configuration.xml
 !compareModule/sports/*
 !accident.txt
 !art.txt
+!stopword.txt
 !crime.txt
 !education.txt
 !environment.txt
